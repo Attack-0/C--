@@ -1,0 +1,139 @@
+<!DOCTYPE html><html><head><title>map 映射</title><meta charset='utf-8'><link href='https://dn-maxiang.qbox.me/res-min/themes/marxico.css' rel='stylesheet'><style>.note-content  {font-family: "Helvetica Neue", Arial, "Hiragino Sans GB", STHeiti, "Microsoft YaHei", "WenQuanYi Micro Hei", SimSun, Song, sans-serif;}
+
+.note-content h3 {border-width: 0px 0px 0px 8px; border-left-style: solid; border-left-color: rgb(255,0,0); border-top-left-radius: 5px; border-bottom-left-radius: 5px; fonr-family: "Fixedsys Excelsior 3.01";}
+.note-content p {text-indent: 2em;}
+
+</style></head><body><div id='preview-contents' class='note-content'>
+                        
+                    
+
+<h3 id="map-映射">map 映射</h3>
+
+<p>map是STL的一种有序无重复的关联容器。关联容器与序列容器不同，他们的元素是按照<strong>关键字</strong>来保存和访问的。 <br>
+  map提供一对一（保存的是一种key-value的pair对象，<font color="red">key</font>是关键字且唯一，value是关键字对应的值）的数据处理能力，由于这个特性，它完全有在我们处理一对一数据的时候，在编程上提供快速通道。 <br>
+头文件<code>#include &lt;map&gt;</code> <br>
+名字空间<code>using namespace std;</code></p>
+
+<pre class="prettyprint with-line-number hljs-dark"><code class="hljs cpp"><div class="hljs-line"><span class="hljs-comment line-number">1.</span><span class="hljs-built_in">map</span>&lt;<span class="hljs-keyword">int</span>, <span class="hljs-built_in">string</span>&gt; map_test1;  <span class="hljs-comment">//构造一个空的map</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">2.</span><span class="hljs-built_in">map</span>&lt;<span class="hljs-keyword">int</span>, <span class="hljs-built_in">string</span>&gt; map_test2(map_test1.begin(), map_test1.end());
+</div><div class="hljs-line"><span class="hljs-comment line-number">3.</span><span class="hljs-built_in">map</span>&lt;<span class="hljs-keyword">int</span>, <span class="hljs-built_in">string</span>&gt; map_test3(map_test1);
+</div><div class="hljs-line"><span class="hljs-comment line-number">4.</span><span class="hljs-built_in">map</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span>&gt; map_test4{ { <span class="hljs-string">"a"</span>, <span class="hljs-string">"aaa"</span> }, { <span class="hljs-string">"b"</span>, <span class="hljs-string">"aaa"</span> }, { <span class="hljs-string">"c"</span>, <span class="hljs-string">"ccc"</span> } };
+</div><div class="hljs-line"><span class="hljs-comment line-number">5.</span><span class="hljs-built_in">map</span>&lt;<span class="hljs-keyword">int</span>, <span class="hljs-built_in">string</span>&gt;map_test5{ pair&lt;<span class="hljs-keyword">int</span>, <span class="hljs-built_in">string</span>&gt;(<span class="hljs-number">1</span>, <span class="hljs-string">"a"</span>), pair&lt;<span class="hljs-keyword">int</span>, <span class="hljs-built_in">string</span>&gt;(<span class="hljs-number">2</span>, <span class="hljs-string">"c"</span>) };
+</div><div class="hljs-line"><span class="hljs-comment line-number">6.</span><span class="hljs-built_in">map</span>&lt;<span class="hljs-keyword">int</span>, <span class="hljs-built_in">string</span>&gt;map_test6{ <span class="hljs-built_in">std</span>::make_pair(<span class="hljs-number">1</span>, <span class="hljs-string">"a"</span>), <span class="hljs-built_in">std</span>::make_pair(<span class="hljs-number">2</span>, <span class="hljs-string">"c"</span>) };
+</div><div class="hljs-line"><span class="hljs-comment line-number">7.</span><span class="hljs-comment">//插入</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">8.</span><span class="hljs-comment">//1.用数组的方式插入数据</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">9.</span>map_test1[<span class="hljs-number">1</span>] = <span class="hljs-string">"obj_0"</span>;
+</div><div class="hljs-line"><span class="hljs-comment line-number">10.</span>map_test1[<span class="hljs-number">2</span>] = <span class="hljs-string">"obj_2"</span>;
+</div><div class="hljs-line"><span class="hljs-comment line-number">11.</span>map_test1[<span class="hljs-number">3</span>] = <span class="hljs-string">"obj_3"</span>;
+</div><div class="hljs-line"><span class="hljs-comment line-number">12.</span>map_test1[<span class="hljs-number">1</span>] = <span class="hljs-string">"obj_1"</span>;
+</div><div class="hljs-line"><span class="hljs-comment line-number">13.</span><span class="hljs-keyword">for</span> (<span class="hljs-built_in">map</span>&lt;<span class="hljs-keyword">int</span>, <span class="hljs-built_in">string</span>&gt;::iterator iter = map_test1.begin(); iter != map_test1.end(); ++iter)
+</div><div class="hljs-line"><span class="hljs-comment line-number">14.</span>    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"key:"</span> &lt;&lt; iter-&gt;first &lt;&lt; <span class="hljs-string">",value:"</span> &lt;&lt; iter-&gt;second &lt;&lt; <span class="hljs-built_in">endl</span>;
+</div><div class="hljs-line"><span class="hljs-comment line-number">15.</span><span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"---------------------"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+</div><div class="hljs-line"><span class="hljs-comment line-number">16.</span><span class="hljs-comment">//2 insert函数插入pair对象</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">17.</span>map_test1.insert(pair&lt;<span class="hljs-keyword">int</span>, <span class="hljs-built_in">string</span>&gt;(<span class="hljs-number">5</span>, <span class="hljs-string">"obj_5"</span>));
+</div><div class="hljs-line"><span class="hljs-comment line-number">18.</span>map_test1.insert(pair&lt;<span class="hljs-keyword">int</span>, <span class="hljs-built_in">string</span>&gt;(<span class="hljs-number">4</span>, <span class="hljs-string">"obj_4"</span>));
+</div><div class="hljs-line"><span class="hljs-comment line-number">19.</span>map_test1.insert(pair&lt;<span class="hljs-keyword">int</span>, <span class="hljs-built_in">string</span>&gt;(<span class="hljs-number">1</span>, <span class="hljs-string">"obj_100"</span>));
+</div><div class="hljs-line"><span class="hljs-comment line-number">20.</span><span class="hljs-keyword">for</span> (<span class="hljs-built_in">map</span>&lt;<span class="hljs-keyword">int</span>, <span class="hljs-built_in">string</span>&gt;::iterator iter = map_test1.begin(); iter != map_test1.end(); ++iter)
+</div><div class="hljs-line"><span class="hljs-comment line-number">21.</span>    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"key:"</span> &lt;&lt; iter-&gt;first &lt;&lt; <span class="hljs-string">",value:"</span> &lt;&lt; iter-&gt;second &lt;&lt; <span class="hljs-built_in">endl</span>;
+</div><div class="hljs-line"><span class="hljs-comment line-number">22.</span><span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"---------------------"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+</div><div class="hljs-line"><span class="hljs-comment line-number">23.</span><span class="hljs-comment">//3 insert函数插入value_type数据</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">24.</span>map_test1.insert(<span class="hljs-built_in">map</span>&lt;<span class="hljs-keyword">int</span>, <span class="hljs-built_in">string</span>&gt;::value_type(<span class="hljs-number">6</span>, <span class="hljs-string">"obj_6"</span>));
+</div><div class="hljs-line"><span class="hljs-comment line-number">25.</span>map_test1.insert(<span class="hljs-built_in">map</span>&lt;<span class="hljs-keyword">int</span>, <span class="hljs-built_in">string</span>&gt;::value_type(<span class="hljs-number">7</span>, <span class="hljs-string">"obj_7"</span>));
+</div><div class="hljs-line"><span class="hljs-comment line-number">26.</span>map_test1.insert(<span class="hljs-built_in">map</span>&lt;<span class="hljs-keyword">int</span>, <span class="hljs-built_in">string</span>&gt;::value_type(<span class="hljs-number">1</span>, <span class="hljs-string">"obj_200"</span>));
+</div><div class="hljs-line"><span class="hljs-comment line-number">27.</span><span class="hljs-keyword">for</span> (<span class="hljs-built_in">map</span>&lt;<span class="hljs-keyword">int</span>, <span class="hljs-built_in">string</span>&gt;::iterator iter = map_test1.begin(); iter != map_test1.end(); ++iter)
+</div><div class="hljs-line"><span class="hljs-comment line-number">28.</span>    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"key:"</span> &lt;&lt; iter-&gt;first &lt;&lt; <span class="hljs-string">",value:"</span> &lt;&lt; iter-&gt;second &lt;&lt; <span class="hljs-built_in">endl</span>;
+</div><div class="hljs-line"><span class="hljs-comment line-number">29.</span><span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"---------------------"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+</div><div class="hljs-line"><span class="hljs-comment line-number">30.</span><span class="hljs-comment">//后面两种效果上完全一样的，用insert插入数据，重复关键字不能插入。数组方式可以覆盖以前的关键字对应的值</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">31.</span><span class="hljs-comment">//大小</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">32.</span><span class="hljs-built_in">cout</span> &lt;&lt; map_test1.size() &lt;&lt; <span class="hljs-built_in">endl</span>;
+</div><div class="hljs-line"><span class="hljs-comment line-number">33.</span><span class="hljs-comment">//map_test1.clear();</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">34.</span><wbr>
+</div><div class="hljs-line"><span class="hljs-comment line-number">35.</span><span class="hljs-comment">//遍历</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">36.</span><span class="hljs-comment">//1.前向迭代器</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">37.</span><span class="hljs-comment">//2.反向迭代器</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">38.</span><span class="hljs-built_in">map</span>&lt;<span class="hljs-keyword">int</span>, <span class="hljs-built_in">string</span>&gt;::reverse_iterator iter;
+</div><div class="hljs-line"><span class="hljs-comment line-number">39.</span><span class="hljs-keyword">for</span> (iter = map_test1.rbegin(); iter != map_test1.rend(); ++iter)
+</div><div class="hljs-line"><span class="hljs-comment line-number">40.</span>    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"key:"</span> &lt;&lt; iter-&gt;first &lt;&lt; <span class="hljs-string">",value:"</span> &lt;&lt; iter-&gt;second &lt;&lt; <span class="hljs-built_in">endl</span>;
+</div><div class="hljs-line"><span class="hljs-comment line-number">41.</span><span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"---------------------"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+</div><div class="hljs-line"><span class="hljs-comment line-number">42.</span><span class="hljs-comment">//3.用[]的方式</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">43.</span>map_test4[<span class="hljs-string">"abc"</span>] = <span class="hljs-string">"xyz"</span>;
+</div><div class="hljs-line"><span class="hljs-comment line-number">44.</span><span class="hljs-built_in">cout</span> &lt;&lt; map_test4[<span class="hljs-string">"abc"</span>] &lt;&lt; <span class="hljs-built_in">endl</span>;
+</div><div class="hljs-line"><span class="hljs-comment line-number">45.</span><span class="hljs-built_in">cout</span> &lt;&lt; map_test4.at(<span class="hljs-string">"abc"</span>) &lt;&lt; <span class="hljs-built_in">endl</span>;
+</div><div class="hljs-line"><span class="hljs-comment line-number">46.</span><span class="hljs-comment">//查找并获取map中的元素</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">47.</span><span class="hljs-comment">//1. 用count函数判断关键字是够出现 出现是1  没有是0</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">48.</span><span class="hljs-built_in">cout</span> &lt;&lt; map_test1.count(<span class="hljs-number">1</span>) &lt;&lt; <span class="hljs-built_in">endl</span>;
+</div><div class="hljs-line"><span class="hljs-comment line-number">49.</span><span class="hljs-built_in">cout</span> &lt;&lt; map_test1.count(<span class="hljs-number">0</span>) &lt;&lt; <span class="hljs-built_in">endl</span>;
+</div><div class="hljs-line"><span class="hljs-comment line-number">50.</span><span class="hljs-comment">//2. 用find 返回迭代器 没找到返回end()</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">51.</span><span class="hljs-built_in">map</span>&lt;<span class="hljs-keyword">int</span>, <span class="hljs-built_in">string</span>&gt;::iterator it = map_test1.find(<span class="hljs-number">0</span>);
+</div><div class="hljs-line"><span class="hljs-comment line-number">52.</span><span class="hljs-keyword">if</span> (it != map_test1.end())
+</div><div class="hljs-line"><span class="hljs-comment line-number">53.</span>    <span class="hljs-built_in">cout</span> &lt;&lt; it-&gt;second &lt;&lt; <span class="hljs-built_in">endl</span>;
+</div><div class="hljs-line"><span class="hljs-comment line-number">54.</span><span class="hljs-keyword">else</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">55.</span>    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"do not find"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+</div><div class="hljs-line"><span class="hljs-comment line-number">56.</span><span class="hljs-comment">//3 </span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">57.</span>it = map_test1.lower_bound(<span class="hljs-number">3</span>);<span class="hljs-comment">//&gt;=</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">58.</span><span class="hljs-built_in">cout</span> &lt;&lt; it-&gt;second &lt;&lt; <span class="hljs-built_in">endl</span>;
+</div><div class="hljs-line"><span class="hljs-comment line-number">59.</span><wbr>
+</div><div class="hljs-line"><span class="hljs-comment line-number">60.</span>it = map_test1.upper_bound(<span class="hljs-number">3</span>);<span class="hljs-comment">//&gt;</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">61.</span><span class="hljs-built_in">cout</span> &lt;&lt; it-&gt;second &lt;&lt; <span class="hljs-built_in">endl</span>;
+</div><div class="hljs-line"><span class="hljs-comment line-number">62.</span><wbr>
+</div><div class="hljs-line"><span class="hljs-comment line-number">63.</span><span class="hljs-comment">//删除</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">64.</span><span class="hljs-comment">//用迭代器删除</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">65.</span>map_test1.erase(map_test1.begin());
+</div><div class="hljs-line"><span class="hljs-comment line-number">66.</span><span class="hljs-comment">//用关键字删除</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">67.</span>map_test1.erase(<span class="hljs-number">2</span>);
+</div><div class="hljs-line"><span class="hljs-comment line-number">68.</span><span class="hljs-comment">//范围删除</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">69.</span><span class="hljs-comment">//map_test1.erase(map_test1.begin(), map_test1.end());</span>
+</div></code></pre>
+
+<h3 id="multimap-多重映射">multimap 多重映射</h3>
+
+<p>multimap 允许键的值相同，因此在插入操作的时候用到insert_equak(),除此之外，基本上与map相同</p>
+
+<pre class="prettyprint with-line-number hljs-dark"><code class="hljs mipsasm"><div class="hljs-line"><span class="hljs-comment line-number">1.</span><span class="hljs-keyword">multimap&lt;int, </span>string&gt; mu_test<span class="hljs-comment">;</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">2.</span>mu_test.<span class="hljs-keyword">insert({ </span><span class="hljs-number">1</span>, <span class="hljs-string">"aaa"</span> })<span class="hljs-comment">;</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">3.</span>mu_test.<span class="hljs-keyword">insert({ </span><span class="hljs-number">1</span>, <span class="hljs-string">"bbb"</span> })<span class="hljs-comment">;</span>
+</div></code></pre>
+
+<h3 id="set-集合">set 集合</h3>
+
+<p>set是一种关联容器，基本功能与数组相似，其特性如下：</p>
+
+<blockquote>
+  <ul><li>set以RBTree作为底层容器</li>
+  <li>所得元素只有key没有value，value就是key</li>
+  <li>不允许出现重复值</li>
+  <li>所有元素都会自动排序</li>
+  <li>不能通过迭代器改变set的值，因为ser的值就是键</li>
+  </ul>
+</blockquote>
+
+<p>头文件<code>#include &lt;set&gt;</code> <br>
+名字空间<code>using namespace std;</code></p>
+
+<pre class="prettyprint with-line-number hljs-dark"><code class="hljs mipsasm"><div class="hljs-line"><span class="hljs-comment line-number">1.</span>set&lt;int&gt; set_test<span class="hljs-comment">;</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">2.</span>set_test.<span class="hljs-keyword">insert(5);</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">3.</span><span class="hljs-keyword"></span>set_test.<span class="hljs-keyword">insert(1);</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">4.</span><span class="hljs-keyword"></span>set_test.<span class="hljs-keyword">insert(3);</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">5.</span><span class="hljs-keyword"></span>set_test.<span class="hljs-keyword">insert(2);</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">6.</span><span class="hljs-keyword"></span>set_test.<span class="hljs-keyword">insert(5);//键值重复 </span>不会插入
+</div><div class="hljs-line"><span class="hljs-comment line-number">7.</span>int a[] = { <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span> }<span class="hljs-comment">;</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">8.</span>set_test.<span class="hljs-keyword">insert(a, </span>a + <span class="hljs-number">3</span>)<span class="hljs-comment">;</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">9.</span>set&lt;int&gt;::iterator it<span class="hljs-comment">;</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">10.</span>for (it = set_test.<span class="hljs-keyword">begin(); </span>it != set_test<span class="hljs-meta">.end</span>()<span class="hljs-comment">; ++it)</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">11.</span>    cout &lt;&lt; *it &lt;&lt; <span class="hljs-string">" "</span><span class="hljs-comment">;</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">12.</span>cout &lt;&lt; endl<span class="hljs-comment">;</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">13.</span>cout &lt;&lt; <span class="hljs-string">"----------"</span> &lt;&lt; endl<span class="hljs-comment">;</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">14.</span>set&lt;int&gt;::reverse_iterator rit<span class="hljs-comment">;</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">15.</span>for (rit = set_test.rbegin()<span class="hljs-comment">; rit != set_test.rend(); ++rit)</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">16.</span>    cout &lt;&lt; *rit &lt;&lt; <span class="hljs-string">" "</span><span class="hljs-comment">;</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">17.</span>cout &lt;&lt; endl<span class="hljs-comment">;</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">18.</span><wbr>
+</div><div class="hljs-line"><span class="hljs-comment line-number">19.</span>set_test.erase(set_test.find(<span class="hljs-number">1</span>))<span class="hljs-comment">;</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">20.</span>set_test.erase(<span class="hljs-number">2</span>)<span class="hljs-comment">;</span>
+</div></code></pre>
+
+
+
+<h3 id="multiset-多重集合">multiset 多重集合</h3>
+
+<p>multiset相对于set来说，区别就是multiset允许键值重复，在multiset中调用RBTree的insert_equal函数，其他的基本与set相同</p></div></body></html>
